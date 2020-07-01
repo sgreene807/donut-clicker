@@ -50,10 +50,36 @@ const purchaseDonutMultiplier = () => {
     }
 }
 
-
 const activateAutoClickersEvent = () => {
     autoClicker.count += donutMultiplier.count;
     donut.count += autoClicker.count;
 }
+
+const updateDonutCount = () => {
+    const donutCount = document.querySelector(".donuts__created");
+    donutCount.innerText = donut.count
+}
+
+
+const donutClick = document.querySelector(".donuts__maker");
+donutClick.addEventListener("click", () => {
+    event.preventDefault();
+    createDonut();
+    updateDonutCount();
+})
+
+const removeDisabledButtons = () => {
+    const autoClickerButton = document.getElementById('auto-clickers__buy');
+    if (donut.count >= 100){
+       autoClickerButton.disabled = false;
+    }
+    
+    const donutMultiplierButton = document.getElementById('donut-multipliers__buy');
+    if (donut.count >= 10){
+        donutMultiplierButton.disabled = false;
+    }
+}
+
+
 
 
