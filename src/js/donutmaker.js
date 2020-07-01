@@ -4,7 +4,8 @@ const donut = {
 
 const autoClicker = {
     "count": 0,
-    "cost": 100
+    "cost": 100,
+
 }
 
 const donutMultiplier = {
@@ -29,7 +30,7 @@ const getAutoClickerCount = () => {
 }
 
 const purchaseAutoClicker = () => {
-    while (autoClicker.count > 0){
+    while (autoClicker.count >= 0){
         if (donut.count >= autoClicker.cost){
         donut.count - autoClicker.cost;
         autoClicker.cost += (autoClicker.cost * .10)
@@ -39,17 +40,19 @@ const purchaseAutoClicker = () => {
 }
 
 const purchaseDonutMultiplier = () => {
-    while (donutMultiplier.count > 0){
+    while (donutMultiplier.count >= 0){
         if (donut.count >= donutMultiplier.cost){
             donut.count - donutMultiplier.cost;
             donutMultiplier.cost += (donutMultiplier.cost * .10);
             donutMultiplier.count++;
+            autoClicker.count = Math.pow(1.2, donutMultiplier.count)
         }
     }
 }
 
 
 const activateAutoClickersEvent = () => {
+    autoClicker.count += donutMultiplier.count;
     donut.count += autoClicker.count;
 }
 
