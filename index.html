@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module 4 Project</title>
 </head>
-<header><h1>Donut Maker</h1></header>
+<header><h1>Donut Maker Game</h1>
+    <button type="button" class="collapsible">Learn More About Fred the Baker Baking Company</button>
+    <div class="content">
+      <p>Fred the Baker Baking Company was started by Fred Miller and his wife, Mary Miller, in 1922. Their donuts have truly
+          stood the test of time and continue to be loved by those in the Columbus, Ohio area.
+      </p>
+    </div>
+</header>
 <body>
     <div class="container">
+        <section class="donuts">
+            <p>Donuts created:</p>
+        <p class="donuts__created">0</p>
+        <button class="donuts__maker">Make Donuts</button>
+        </section>
+
+        <section class="auto-clickers">
+            <p>Autoclickers purchased:</p>
+            <p class="auto-clickers__created">0</p>
+            <button class="auto-clickers__buy">Buy Autoclicker</button>
+        </section>
+
+        <section class="donut-multipliers">
+            <p>Donut Multipliers purchased:</p>
+            <p class="donut-multipliers__created">0</p>
+            <button class="donut-multipliers__buy">Buy Donut Multiplier</button>
+        </section>
         <div class="anchor"></div>
     </div>
     <script src="/src/app.js"></script>
