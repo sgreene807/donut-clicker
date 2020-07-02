@@ -29,15 +29,39 @@ const getAutoClickerCount = () => {
     return autoClicker.count;
 }
 
+// const purchaseAutoClicker = () => {
+
+//     let isEnoughDonuts = true;
+//     if (donut.count >= autoClicker.cost){
+//         return isEnoughDonuts;
+//  while (isEnoughDonuts){
+//         donut.count - autoClicker.cost;
+//         autoClicker.count++;
+//         autoClicker.cost += (autoClicker.cost * .10)
+//         activateAutoClicker
+//         }
+//     }
+// }
+
 const purchaseAutoClicker = () => {
-    while (autoClicker.count >= 0){
-        if (donut.count >= autoClicker.cost){
-        donut.count - autoClicker.cost;
-        autoClicker.cost += (autoClicker.cost * .10)
-        autoClicker.count++;
-        }
+
+    if (donut.count >= autoClicker.cost) {
+        document.querySelector(".donuts__created").innerHTML = donut.count - autoClicker.cost;
+    
+        let number = donut.count - autoClicker.cost;
+
+        function activateAutoClicker() {
+         for (let i = 0; i < 1; i++) {
+        document.querySelector(".donuts__created").innerHTML = number += 1
     }
 }
+
+setInterval(activateAutoClicker, 1000);
+
+    }
+
+}
+
 
 const purchaseDonutMultiplier = () => {
     while (donutMultiplier.count >= 0){
@@ -46,6 +70,8 @@ const purchaseDonutMultiplier = () => {
             donutMultiplier.cost += (donutMultiplier.cost * .10);
             donutMultiplier.count++;
             autoClicker.count = Math.pow(1.2, donutMultiplier.count)
+
+
         }
     }
 }
@@ -61,6 +87,7 @@ const updateDonutCount = () => {
 }
 
 
+
 const donutClick = document.querySelector(".donuts__maker");
 donutClick.addEventListener("click", () => {
     event.preventDefault();
@@ -68,17 +95,24 @@ donutClick.addEventListener("click", () => {
     updateDonutCount();
 })
 
-const removeDisabledButtons = () => {
-    const autoClickerButton = document.getElementById('auto-clickers__buy');
-    if (donut.count >= 100){
-       autoClickerButton.disabled = false;
-    }
+const autoClickerClick = document.querySelector(".auto-clickers__buy");
+autoClickerClick.addEventListener("click", () => {
+    event.preventDefault();
+    purchaseAutoClicker();
     
-    const donutMultiplierButton = document.getElementById('donut-multipliers__buy');
-    if (donut.count >= 10){
-        donutMultiplierButton.disabled = false;
-    }
-}
+})
+
+// const removeDisabledButtons = () => {
+//     const autoClickerButton = document.getElementById('auto-clickers__buy');
+//     if (donut.count >= 100){
+//        autoClickerButton.disabled = false;
+//     }
+    
+//     const donutMultiplierButton = document.getElementById('donut-multipliers__buy');
+//     if (donut.count >= 10){
+//         donutMultiplierButton.disabled = false;
+//     }
+// }
 
 
 
