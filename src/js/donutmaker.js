@@ -14,20 +14,15 @@ const donutMultiplier = {
 }
 
 const createDonut = () => {
-    donut.count += 1
+    if (donutMultiplier.count > 0) {
+        donut.count += Math.pow(1.2, donutMultiplier.count);
+        document.querySelector(".donuts__created").innerHTML = donut.count;
+    } else {
+        donut.count += 1
+        document.querySelector(".donuts__created").innerHTML = donut.count;
+    }
 }
 
-// const getDonutCount = () => {
-//     return donut.count; 
-// }
-
-// const getDonutMultiplierCount = () => {
-//     return donutMultiplier.count;
-// }
-
-// const getAutoClickerCount = () => {
-//     return autoClicker.count;
-// }
 
 const purchaseAutoClicker = (donut, autoClicker) => {
     if (donut.count < autoClicker.cost) {
@@ -41,54 +36,25 @@ const purchaseAutoClicker = (donut, autoClicker) => {
 
         updateAutoClickerCount();
 
-        setInterval(activateAutoClicker, 1000);
+        setInterval(createDonut, 1000);
         
     }
-    // 1. Donuts created has to be >= 100
-    // 2. More than one auto clicker can be purchased
-    // 3. Cost for auto clicker should increase by 10%
 
-
-
-    // while (donut.count >= autoClicker.cost) {
-
-    //     document.querySelector(".donuts__created").innerHTML = donut.count - autoClicker.cost;
-    //     document.querySelector(".auto-clickers__created").innerHTML = autoClicker.count += 1;
-        
-    //     let number = donut.count - autoClicker.cost;
-
-    //     function activateAutoClicker() {
-    //         for (let i = 0; i < 1; i++) {
-    //         document.querySelector(".donuts__created").innerHTML = number += 1
-        
-    //         }
-    //     }
-
-    //     setInterval(activateAutoClicker, 1000);
-    //     autoClicker.cost += (autoClicker.cost * .10);
-
-    // }
-
-}
-
-const activateAutoClicker = () => {
-    donut.count = document.querySelector(".donuts__created").innerHTML++;
 }
 
 const purchaseDonutMultiplier = () => {
 
-    while (donut.count >= donutMultiplier.cost) {
+    if(donut.count < donutMultiplier.cost) {
+        return;
+    } else {
 
-            document.querySelector(".donut-multipliers__created").innerHTML = donut.count - donutMultiplier.cost;
-            donutMultiplier.count += 1;
-            donut.count = Math.pow(1.2, donutMultiplier.count)
-
-
-        }
-
+        document.querySelector(".donuts__created").innerHTML = donut.count - donutMultiplier.cost;
+        donut.count -= donutMultiplier.cost;
+        document.querySelector(".donut-multipliers__created").innerHTML = donutMultiplier.count += 1;
         donutMultiplier.cost += (donutMultiplier.cost * .10);
+        console.log(donutMultiplier.count);
     }
-
+}
 
 const activateAutoClickersEvent = () => {
     autoClicker.count += donutMultiplier.count;
