@@ -1,5 +1,5 @@
 const donut = {
-    "count": 102
+    "count": 0
 }
 
 const autoClicker = {
@@ -34,7 +34,7 @@ const purchaseAutoClicker = (donut, autoClicker) => {
         
         autoClicker.cost += (autoClicker.cost * .10);
 
-        updateAutoClickerCount();
+        // updateAutoClickerCount();
 
         setInterval(createDonut, 1000);
         
@@ -61,26 +61,10 @@ const activateAutoClickersEvent = () => {
     donut.count += autoClicker.count;
 }
 
-const updateDonutCount = () => {
-    const donutCount = document.querySelector(".donuts__created");
-    donutCount.innerText = donut.count;
-}
-
-const updateAutoClickerCount = () => {
-    const autoClickerCount = document.querySelector(".auto-clickers__created");
-    autoClicker.innerText = autoClicker.count;
-}
-
-const updateDonutMultiplierCount = () => {
-    const donutMultiplierCount = document.querySelector(".donut-multipliers__created");
-    donutMultiplier.innerText = donutMultiplier.count;
-}
-
 const donutClick = document.querySelector(".donuts__maker");
 donutClick.addEventListener("click", () => {
     event.preventDefault();
     createDonut();
-    updateDonutCount();
 })
 
 const autoClickerClick = document.querySelector(".auto-clickers__buy");
@@ -93,8 +77,6 @@ const donutMultiplierClick = document.querySelector(".donut-multipliers__buy");
     donutMultiplierClick.addEventListener("click", () => {
     event.preventDefault();
     purchaseDonutMultiplier();
-    updateDonutCount();
-    updateDonutMultiplierCount();
 })
 
 // const removeDisabledButtons = () => {
