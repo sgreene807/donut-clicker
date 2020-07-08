@@ -10,12 +10,15 @@ const autoClicker = {
 
 const donutMultiplier = {
     "count": 0,
-    "cost": 10
+    "cost": 10,
+    "clickValue": 0
 }
 
 const createDonut = () => {
     if (donutMultiplier.count > 0) {
         donut.count += Math.pow(1.2, donutMultiplier.count);
+        donutMultiplier.clickValue = Math.pow(1.2, donutMultiplier.count);
+        document.querySelector(".donut-multipliers__value").innerHTML = donutMultiplier.clickValue;
         document.querySelector(".donuts__created").innerHTML = donut.count;
     } else {
         donut.count += 1
@@ -33,6 +36,7 @@ const purchaseAutoClicker = (donut, autoClicker) => {
         document.querySelector(".auto-clickers__created").innerHTML = autoClicker.count += 1;
         
         autoClicker.cost += (autoClicker.cost * .10);
+        document.querySelector(".auto-clickers__cost").innerHTML = autoClicker.cost;
         setInterval(createDonut, 1000);
         
     }
@@ -49,6 +53,7 @@ const purchaseDonutMultiplier = () => {
         donut.count -= donutMultiplier.cost;
         document.querySelector(".donut-multipliers__created").innerHTML = donutMultiplier.count += 1;
         donutMultiplier.cost += (donutMultiplier.cost * .10);
+        document.querySelector(".donut-multipliers__cost").innerHTML = donutMultiplier.cost;
         console.log(donutMultiplier.count);
     }
 }
