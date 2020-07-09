@@ -81,6 +81,22 @@ const donutMultiplierClick = document.querySelector(".donut-multipliers__buy");
     purchaseDonutMultiplier();
 })
 
+let autoClickerButton = document.querySelector(".auto-clickers__buy");
+autoClickerButton.disabled = true;
+if (donut.count >= autoClicker.cost){
+    autoClickerButton.disabled = false;
+}
+
+
+let donutMultButton = document.querySelector(".donut-multipliers__buy");
+donutMultButton.disabled = true;
+if (donut.count >= donutMultiplier.cost){
+    donutMultButton.disabled = false;
+}
+
+
+
+
 
 
 
