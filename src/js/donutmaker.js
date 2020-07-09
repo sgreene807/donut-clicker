@@ -14,6 +14,12 @@ const donutMultiplier = {
     "clickValue": 0
 }
 
+const autoClickerButton = document.querySelector(".auto-clickers__buy");
+const donutMultButton = document.querySelector(".donut-multipliers__buy");
+
+autoClickerButton.disabled = true;
+donutMultButton.disabled = true;
+
 const createDonut = () => {
     if (donutMultiplier.count > 0) {
         donut.count += Math.pow(1.2, donutMultiplier.count);
@@ -21,9 +27,11 @@ const createDonut = () => {
         document.querySelector(".donut-multipliers__value").innerHTML = donutMultiplier.clickValue;
         document.querySelector(".donuts__created").innerHTML = donut.count;
     } else {
-        donut.count += 1
+        donut.count += 1;
         document.querySelector(".donuts__created").innerHTML = donut.count;
     }
+    donut.count >= autoClicker.cost ? autoClickerButton.disabled = false : autoClickerButton.disabled = true;
+    donut.count >= donutMultiplier.cost ? donutMultButton.disabled = false : donutMultButton.disabled = true;
 }
 
 
@@ -54,7 +62,6 @@ const purchaseDonutMultiplier = () => {
         document.querySelector(".donut-multipliers__created").innerHTML = donutMultiplier.count += 1;
         donutMultiplier.cost += (donutMultiplier.cost * .10);
         document.querySelector(".donut-multipliers__cost").innerHTML = donutMultiplier.cost;
-        console.log(donutMultiplier.count);
     }
 }
 
@@ -80,20 +87,6 @@ const donutMultiplierClick = document.querySelector(".donut-multipliers__buy");
     event.preventDefault();
     purchaseDonutMultiplier();
 })
-
-let autoClickerButton = document.querySelector(".auto-clickers__buy");
-autoClickerButton.disabled = true;
-if (donut.count >= autoClicker.cost){
-    autoClickerButton.disabled = false;
-}
-
-
-let donutMultButton = document.querySelector(".donut-multipliers__buy");
-donutMultButton.disabled = true;
-if (donut.count >= donutMultiplier.cost){
-    donutMultButton.disabled = false;
-}
-
 
 
 
